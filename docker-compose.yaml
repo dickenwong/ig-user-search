@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - ./mongo/db:/data/db
+    restart: always
+
+  crawler:
+    build: ./crawler
+    command: npm start
+    ports:
+      - 8080:8080
+    volumes:
+      - ./crawler:/usr/src/app
+    environment:
+      NODE_ENV: development
+      TOR: 1
+    links:
+      - mongo
+    restart: always
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    links:
+      - mongo
+    restart: always
+

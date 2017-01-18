@@ -1,0 +1,124 @@
+<form class="search-form"
+      ng-submit="vm.igUserSearcher.crawl(vm.form, $event)">
+  <table>
+    <tr>
+      <th>Tag</th>
+      <td>
+        <input type="text"
+               class="text-input search-form__input-group__tag-input"
+               required="required"
+               ng-model="vm.form.tag">
+      </td>
+    </tr>
+    <tr>
+      <th>Has Chinese</th>
+      <td>
+        <label class="form-checkbox">
+          <input type="checkbox" ng-model="vm.form.hasChinese">
+          <i class="form-icon"></i> Yes
+        </label>
+        <label class="form-checkbox">
+          <input type="checkbox" ng-model="vm.form.hasNoChinese">
+          <i class="form-icon"></i> No
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <th>Has Japanese</th>
+      <td>
+        <label class="form-checkbox">
+          <input type="checkbox" ng-model="vm.form.hasJapanese">
+          <i class="form-icon"></i> Yes
+        </label>
+        <label class="form-checkbox">
+          <input type="checkbox" ng-model="vm.form.hasNoJapanese">
+          <i class="form-icon"></i> No
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <th>Post's Likes >=</th>
+      <td>
+        <input type="number"
+               class="text-input"
+               ng-model="vm.form.postLikeCount">
+      </td>
+    </tr>
+    <tr>
+      <th>Follower >=</th>
+      <td>
+        <input type="number"
+               class="text-input"
+               ng-model="vm.form.followerCount">
+      </td>
+    </tr>
+    <tr>
+      <th>Keywords in caption or bio</th>
+      <td>
+        <input type="text"
+               class="text-input"
+               ng-model="vm.form.keywords">
+        <span class="text-input-hint">(seperate by comma)</span>
+      </td>
+    </tr>
+  </table>
+  <hr>
+
+  <table>
+    <tr>
+      <th># of Post to Crawl</th>
+      <td>
+        <input type="number"
+               class="text-input"
+               required="required"
+               ng-model="vm.form.crawlPostCount"
+               min="500"
+               max="2000">
+        <span class="text-input-hint">(500 - 2000)</span>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button type="submit"
+                class="btn btn--fullwidth"
+                ng-class="{ loading: vm.igUserSearcher.crawl.$promise }"
+                ng-disabled="vm.igUserSearcher.crawl.$promise">
+          Crawl it Now
+        </button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<div class="search-result">
+  <table>
+    <thead>
+      <tr>
+        <th>Tag</th>
+        <th style="width: 100px"># of Records</th>
+        <th>
+          <button class="btn btn--small secondary"
+                  ng-click="vm.igUserSearcher.clearAllRecords($event)">
+            Clear all records
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(tag, count) in vm.searchRecords">
+        <td ng-bind="tag"></td>
+        <td style="width: 100px" ng-bind="count"></td>
+        <td>
+          <button class="btn btn--small"
+                  ng-click="vm.igUserSearcher.listRecords(tag, $event)">
+            Show results
+          </button>
+          <button class="btn btn--small secondary"
+                  ng-click="vm.igUserSearcher.clearRecords(tag, $event)">
+            Clear
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

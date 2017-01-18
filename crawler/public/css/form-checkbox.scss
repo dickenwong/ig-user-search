@@ -1,0 +1,76 @@
+.form-checkbox {
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.8rem;
+  padding: .1rem 2rem .1rem 2rem;
+  position: relative;
+
+  .form-icon {
+    border: .1rem solid $border-color;
+    background: #ffffff;
+    display: inline-block;
+    font-size: 1.4rem;
+    height: 1.4rem;
+    left: 0;
+    line-height: 2.4rem;
+    outline: none;
+    padding: 0;
+    position: absolute;
+    top: .3rem;
+    transition: all .15s ease;
+    vertical-align: top;
+    width: 1.4rem;
+    border-radius: .2rem;
+  }
+
+  input {
+    clip: rect(0, 0, 0, 0);
+    height: .1rem;
+    margin: -.1rem;
+    overflow: hidden;
+    position: absolute;
+    width: .1rem;
+
+    &:checked + .form-icon {
+      background: $primary-color;
+      border-color: $primary-color;
+
+      &::after {
+        background-clip: padding-box;
+        border: .2rem solid #fff;
+        border-left-width: 0;
+        border-top-width: 0;
+        content: " ";
+        height: .8rem;
+        left: 50%;
+        margin-left: -.25rem;
+        margin-top: -.6rem;
+        position: absolute;
+        top: 50%;
+        transform: rotate(45deg);
+        width: .3rem;
+      }
+    }
+
+    &:active + .form-icon {
+      background: $primary-color;
+    }
+
+    &:indeterminate + .form-icon {
+      background: $primary-color;
+      border-color: $primary-color;
+
+      &::after {
+        background: #fff;
+        content: "";
+        height: .2rem;
+        left: 50%;
+        margin-left: -.4rem;
+        margin-top: -.1rem;
+        position: absolute;
+        top: 50%;
+        width: .8rem;
+      }
+    }
+  }
+}

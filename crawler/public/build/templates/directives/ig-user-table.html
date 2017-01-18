@@ -1,0 +1,31 @@
+<table class="ig-user-table">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Follower Count</th>
+      <th>Post Likes</th>
+      <th>Profile link</th>
+      <th>Post</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in vm.userLists">
+      <td ng-bind="user.index"></td>
+      <td ng-bind="user.username"></td>
+      <td ng-bind="user.emailInBio || '-'"></td>
+      <td ng-bind="user.followerCount"></td>
+      <!-- <td ng-bind="user.recentMediaAverageLikes.count  || '-'"></td> -->
+      <td ng-bind="user.post.likeCount || '-'"></td>
+      <td>
+        <a target="_blank" ng-href="{$ 'https://www.instagram.com/' + user.username $}">link</a>
+      </td>
+      <td>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7">
+          <a ng-href="{$ ::('https://www.instagram.com/p/' + user.post.code + '/') $}"></a>
+        </blockquote>
+      </td>
+    </tr>
+  </tbody>
+</table>

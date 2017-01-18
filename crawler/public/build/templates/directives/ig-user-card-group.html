@@ -1,0 +1,61 @@
+<section class="ig-user-card-group"
+         id="igUserSearchResults"
+         ng-show="vm.userLists.length > 0">
+  <div class="ig-user-card-group__sort-handle">
+    <button type="button"
+            class="btn btn--small secondary"
+            ng-click="vm.sortBy(vm.sortBy.DATE)">
+      Sort by Date
+    </button>
+    <button type="button"
+            class="btn btn--small secondary"
+            ng-click="vm.sortBy(vm.sortBy.LIKE)">
+      Sort by Like
+    </button>
+  </div>
+  <div class="ig-user-card"
+       ng-repeat="($index, user) in vm.userLists"
+       ng-if="vm.canShow($index)">
+    <div class="ig-user-card__data">
+      <div>
+        <span class="ig-user-card__data__username">
+          #<span ng-bind="$index + 1"></span>
+          <a target="_blank"
+             ng-href="{$ 'https://www.instagram.com/' + user.username $}"
+             ng-bind="user.username"></a>
+        </span>
+        <span class="ig-user-card__data__follower-count">
+          💚 <span ng-bind="user.post.likeCount"></span>
+          👤 <span ng-bind="user.followerCount"></span>
+        </span>
+      </div>
+      <div class="ig-user-card__data__email"
+           ng-bind="user.emailInBio"></div>
+    </div>
+
+    <div class="ig-user-card__post-wrapper">
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7">
+        <a ng-href="{$ ::('https://www.instagram.com/p/' + user.post.code + '/') $}"></a>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<div ng-if="vm.userLists.length > 0">
+  <a class="page-num page-num--highlight"
+     ng-class="{ 'page-num--hide': vm.display.page === 0 }"
+     ng-click="vm.toPage(vm.display.page - 1)">
+    Back
+  </a>
+  <a class="page-num"
+     ng-class="{ 'page-num--highlight': vm.isPageActive(page) }"
+     ng-repeat="page in vm.pages()"
+     ng-bind="page + 1"
+     ng-click="vm.toPage(page)">
+  </a>
+  <a class="page-num page-num--highlight"
+     ng-class="{ 'page-num--hide': vm.isLastPage(vm.display.page) }"
+     ng-click="vm.toPage(vm.display.page + 1)">
+    Next
+  </a>
+</div>

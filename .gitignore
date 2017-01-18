@@ -1,0 +1,11 @@
+*.DS_Store
+._*
+
+
+**/node_modules/
+**/npm-debug.log
+
+mongo/db/
+
+**/public/build/js/*.js
+**/public/build/css/*.css

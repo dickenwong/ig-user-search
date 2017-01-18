@@ -1,0 +1,171 @@
+@mixin inner-offset($offset) {
+    position: absolute;
+    top: $offset;
+    bottom: $offset;
+    left: $offset;
+    right: $offset;
+}
+
+@mixin mobile {
+    @media only screen and (max-width: $mobile-width) {
+        @content;
+    }
+}
+
+@mixin non-mobile {
+    @media only screen and (min-width: $mobile-width + 1) {
+        @content;
+    }
+}
+
+@mixin legacy-valign-wrapper {
+    display: table;
+}
+
+@mixin legacy-valign {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+@mixin line-clamp($line-count) {
+    display: -webkit-box;
+    -webkit-line-clamp: $line-count;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: auto;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+}
+
+button:focus, input:focus {
+    background-color: inherit;
+    outline: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: pointer;
+}
+
+img, video {
+    width: 100%;
+}
+
+button, .noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.valign-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.float-center {
+    margin: 0 auto;
+    float: none;
+}
+
+.float-left {
+    display: inline-block;
+    float: left;
+}
+
+.clearfix {
+    @include clearfix;
+}
+
+.legacy-valign-wrapper {
+    @include legacy-valign-wrapper;
+}
+
+.legacy-valign {
+    @include legacy-valign;
+}
+
+.fit {
+    width: 100%;
+    height: 100%;
+}
+
+&[disabled],
+.disabled {
+    cursor: not-allowed !important;
+    opacity: .75;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.overlay {
+    @include inner-offset(0);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s opacity, 0.3s visibility;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.mobile {
+    @include non-mobile {
+        display: none !important;
+    }
+}
+
+.non-mobile {
+    @include mobile {
+        display: none !important;
+    }
+}
+
+@function em($px, $base: $base-font-size) {
+    @return ($px / $base) * 1em;
+}

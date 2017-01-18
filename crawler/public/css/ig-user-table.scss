@@ -1,0 +1,17 @@
+.ig-user-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+  th, td {
+    border-bottom: .1rem solid $border-color;
+    padding: 1.5rem 1rem;
+    text-align: left;
+  }
+
+  th {
+    border-color: $grey-color;
+    font-weight: 600;
+  }
+
+}

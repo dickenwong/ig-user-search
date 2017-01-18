@@ -1,0 +1,137 @@
+<main ng-controller="MainController as vm" ng-init="vm.init()">
+
+  <h1>IG User Search</h1>
+
+  <section search-form></section>
+  <section ig-user-card-group></section>
+
+{{!--   <form id="form" ng-submit="vm.crawl($event)">
+    <h4>Search the most recent posts by Tag to look for Instagram profiles</h4>
+    <hr>
+
+    <div>
+      <label>Tag</label>
+      <input type="text" name="tag" required>
+    </div>
+
+    <div>
+      <label>Has Chinese</label>
+      <input type="checkbox" name="hasChinese">
+    </div>
+
+    <div>
+      <label>Has Japanese</label>
+      <input type="checkbox" name="hasJapanese">
+    </div>
+
+    <div>
+      <label># of Likes of the post that has the tag &gt;=</label>
+      <input type="number" name="postLikeCount">
+    </div>
+
+    <div>
+      <label># of Followers &gt;=</label>
+      <input type="number" name="followerCount">
+    </div>
+
+    <!-- <div>
+      <label># of Likes/post &gt;=</label>
+      <input type="number" name="avgLikeCount"> in
+      <input type="number" name="recentMediaCount" max="30"> recent posts
+    </div> -->
+
+    <div>
+      <label>Keywords in post caption or user bio</label>
+      <input type="text" name="keywords"> (seperate by comma)
+    </div>
+
+    <div>
+      <label># of posts to crawl &gt;=</label>
+      <input type="number" name="crawlPostCount" min="1" required>
+      (500 - 2000)
+    </div>
+
+    <button type="submit" ng-disabled="vm.crawling">Search</button>
+    <p>
+      Click `Search` to start a new search with a new tag,<br>
+      or continue searching with the same tag after the last search.
+    </p>
+  </form>
+
+  <hr>
+
+  <!-- <button type="button" ng-click="vm.countRecords($event)">
+    Fetch record counts
+  </button> -->
+  <button type="button" ng-click="vm.clearAllRecords($event)">
+    Clear all tags' records
+  </button>
+  <table class="table" style="width: 500px">
+    <tr>
+      <th>Tag</th>
+      <th># of profile records</th>
+    </tr>
+    <tr ng-repeat="(tag, count) in vm.tagRecordCounts">
+      <th ng-bind="tag"></th>
+      <td ng-bind="count"></td>
+      <td>
+        <button type="button"
+                ng-click="vm.listRecords($event, tag)"
+                ng-disabled="vm.crawling">
+          show results
+        </button>
+      </td>
+      <td>
+        <button type="button"
+                ng-click="vm.clearRecords($event, tag)"
+                ng-disabled="vm.crawling">
+          clear
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <div>
+    # of API requests in the last 60 min:
+    <span ng-bind="vm.apiCallCount"></span>
+  </div>
+
+  <!-- <hr>
+  <div>
+    <button type="button" on-click="window.instgrm.Embeds.process()">
+      Re-fetch posts
+    </button>
+  </div> -->
+
+  <hr>
+
+  <table ng-table="vm.tableParams" class="table" show-filter="true">
+    <tr ng-repeat="user in $data">
+      <td title="'#'" sortable="'index'" ng-bind="user.index"></td>
+      <td title="'Name'" sortable="'name'" ng-bind="user.username"></td>
+      <td title="'Email'" ng-bind="user.emailInBio || '-'"></td>
+      <td title="'Follower Count'" sortable="'followerCount'" ng-bind="user.followerCount"></td>
+      <!-- <td title="'Avg. Likes / Post'" sortable="'recentMediaAverageLikes.count'" ng-bind="user.recentMediaAverageLikes.count  || '-'"></td> -->
+      <td title="'Post Likes'" sortable="'post.likeCount'" ng-bind="user.post.likeCount  || '-'"></td>
+      <td title="'Profile link'">
+        <a target="_blank"
+           ng-href="{$ 'https://www.instagram.com/' + user.username $}">
+         link
+        </a>
+      </td>
+      <td title="'Post'">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="7">
+          <a ng-href="{$ ::('https://www.instagram.com/p/' + user.post.code + '/') $}"></a>
+        </blockquote>
+      </td>
+    </tr>
+  </table> --}}
+
+</main>
+
+<script type="text/javascript">
+/* eslint-disable */
+
+</script>
